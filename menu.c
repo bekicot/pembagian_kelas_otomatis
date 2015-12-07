@@ -18,8 +18,8 @@ void menuUtama() {
     printf("    2) Lihat Data\n");
     printf("    3) Bagi Siswa Kedalam Kelas\n");
   }
-  printf("    4) Load\n");
-  printf("    5) Save\n");
+  // printf("    4) Load\n");
+  // printf("    5) Save\n");
   printf("    6) exit\n");
   ambilPilihanMenu(&pilihan);
   switch (pilihan) {
@@ -43,7 +43,7 @@ void menuUtama() {
       menuUtama();  
       break;
     case 4:
-      loadSiswaCsv();
+      readFromFIle();
       menuUtama();
       break;
     case 5:

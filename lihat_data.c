@@ -11,8 +11,9 @@ void lihatDataSiswa(){
 void lihatDataSiswaDari(klassSiswa *siswa){
   int i = 0;
   while(siswa[i].nama != NULL){
+    printf("blah ?\n");
     printf("%i ", siswa[i].nim);
-    printf("%s\n", siswa[i].nama);
+    printf("%d\n", strlen(siswa[i].nama));
     i++;
   }
 }

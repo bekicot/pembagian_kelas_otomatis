@@ -11,6 +11,7 @@ void inputSiswa(){
     printf("Masukan Nama Siswa Anggota kelas : ");
     listSiswa[idx].nama = malloc(sizeof(char)*100);
     fgets (listSiswa[idx].nama, 100, stdin);
+    strcpy(cleanNewline(listSiswa[idx].nama), listSiswa[idx].nama);
     // scanf("%[^\n]%*c", listSiswa[idx].nama);
     printf("Masukan NIM Siswa Anggota kelas : ");
     scanf("%i", &listSiswa[idx].nim);

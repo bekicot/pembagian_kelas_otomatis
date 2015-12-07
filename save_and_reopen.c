@@ -12,7 +12,6 @@ void simpanKeFile(){
   }
   i = 0;
   while(listKelas[i].nama != NULL){
-    printf("nnan %i\n", i);
     outFileFormat.listKelas[i] = listKelas[i];
     i++;
   }
@@ -26,7 +25,6 @@ void simpanKeFile(){
         fprintf(stderr, "\nError Saat Membuka %s\n\n", namaFile);
     }
 
-   // write entire structure to Accounts file
    fwrite (&outFileFormat, sizeof(outFileFormat), 1, outfile);
 }
 
@@ -36,7 +34,6 @@ void readFromFIle(){
   char namaFile[100];
   int i, j;
 
-  /*** open the accounts file ***/
   if (infile == NULL)
     {
       printf("Masukan nama filenya : ");
@@ -48,7 +45,7 @@ void readFromFIle(){
 
 
   while (fread (&outFileFormat, sizeof(fileFormat), 1, infile))
-    i =0;
+    i =0;  
     while(outFileFormat.listSiswa[i].nama != NULL){
       listSiswa[i] = outFileFormat.listSiswa[i];
       i++;
