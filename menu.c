@@ -1,5 +1,5 @@
 // Headers
-void printHeaderMenu();
+void printHeaderMenu(char *namaMenu);
 void ambilPilihanMenu();
 void menuUtama();
 void menuInputData();
@@ -12,7 +12,7 @@ void salahPilih();
 void menuUtama() {
   // system("clear");
   int pilihan;
-  printHeaderMenu();
+  printHeaderMenu("Utama");
   printf("    1) Input Data\n");
   if(listSiswa[0].nama != NULL){
     printf("    2) Lihat Data\n");
@@ -37,11 +37,10 @@ void menuUtama() {
     case 3:
       if(listSiswa[0].nama != NULL){
         bagiSiswaKedalamKelas();
-        
       }else{
         salahPilih();
-        menuUtama();
       }
+      menuUtama();  
       break;
     case 4:
       loadSiswaCsv();
@@ -62,7 +61,7 @@ void menuUtama() {
 
 void menuInputData(){
   int pilihan;
-  printHeaderMenu();
+  printHeaderMenu("Input Data");
   printf("    1) Input Siswa Manual\n");
   printf("    2) Load Siswa (CSV) \n");
   printf("    0) Kembali Ke Menu Utama \n");
@@ -81,12 +80,48 @@ void menuInputData(){
       loadSiswaCsv();
       menuInputData();
       break;
+    default:
+      salahPilih();
+      menuUtama();
   }
 }
 
-void printHeaderMenu(){
+void menuLihatData(){
+  int pilihan;
+  printHeaderMenu("Lihat Data");
+  printf("    1) Lihat Data Siswa\n");
+  if(listKelas[0].nama != NULL){
+    printf("    2) Lihat Data Kelas\n");
+    printf("    3) Cari Data Siswa (Berdasarkan NIM)\n");
+  }
+  printf("    0) Kembali Ke Menu Utama \n");
+  ambilPilihanMenu(&pilihan);
+
+  switch (pilihan) {
+    case 0:
+      menuUtama();
+      break;
+    case 1:
+      lihatDataSiswa();
+      menuLihatData();
+      break;
+    case 2:
+      if(listKelas[0].nama != NULL){
+        lihatDataKelas();
+      } else {
+        salahPilih();
+      }
+      menuUtama();  
+      break;
+    case 3:
+      cariKelasSiswaNim();
+      break;
+  }
+}
+
+void printHeaderMenu(char *namaMenu){
   printf("\n\nPEMBAGIAN KELAS OTOMATIS\n");
-  printf(" Menu Utama :\n");
+  printf(" Menu %s :\n", namaMenu);
 }
 
 void ambilPilihanMenu(int *pilihan){
@@ -95,30 +130,6 @@ void ambilPilihanMenu(int *pilihan){
   getchar();
   fseek(stdin,0,SEEK_END);
 }
-
-
-void menuLihatData(){
-  int pilihan;
-  printHeaderMenu();
-  printf("    1) Lihat Data Siswa\n");
-  printf("    2) Lihat Data Kelas\n");
-  printf("    3) Cari Data Siswa (Berdasarkan NIM)\n");
-  printf("    0) Kembali Ke Menu Utama \n");
-  ambilPilihanMenu(&pilihan);
-
-  switch (pilihan) {
-    case 0:
-      menuUtama();
-    case 1:
-      lihatDataSiswa();
-      menuLihatData();
-    // case 2:
-    //   loadSiswaCsv();
-    case 3:
-      cariKelasSiswaNim();
-  }
-}
-
 
 void menuSave() {
   belumDiImplementasi();

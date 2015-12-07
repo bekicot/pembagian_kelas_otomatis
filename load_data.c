@@ -18,8 +18,26 @@ const char* getfield(char* line, int num)
 
 void loadSiswaCsv()
 {
+    char *lokasiFile = malloc(100);
     int i = indexSiswaKosong();
-    FILE* stream = fopen("ilmu_komputasi_name_and_nim_only_by_name.csv", "r");
+
+    if ((strlen(lokasiFile)>0) && (lokasiFile[strlen (lokasiFile) - 1] == '\n'))
+    lokasiFile[strlen (lokasiFile) - 1] = '\0';
+
+    FILE* stream;
+    while(stream == NULL){
+
+        printf("Masukan nama file : ");
+        fgets(lokasiFile, 100, stdin);
+        strcpy(cleanNewline(lokasiFile), lokasiFile);
+        if(strcmp(lokasiFile, "Tidak") == 0)
+            return;
+
+        stream = fopen(lokasiFile, "r");
+        if(stream == NULL){
+            printf("File Yang Anda Masukan Salah, Masukan Nama File atau masukan 'Tidak' Untuk Membatalkan. ");
+        }
+    }
     char line[1024];
     while (fgets(line, 1024, stream))
     {

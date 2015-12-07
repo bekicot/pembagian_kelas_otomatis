@@ -8,7 +8,6 @@ extern klassSiswa listSiswa[10000];
 void inputSiswa(){
   int idx = indexSiswaKosong();
   if(idx != -1){
-    getchar();
     printf("Masukan Nama Siswa Anggota kelas : ");
     listSiswa[idx].nama = malloc(sizeof(char)*100);
     fgets (listSiswa[idx].nama, 100, stdin);
@@ -22,6 +21,7 @@ void ambilBerulang(char* konteks, void (*f)()){
   char respon[5];
   printf("Masukan data %s lagi ( Ya | Tidak ) ? ", konteks);
   scanf("%s", respon);
+  getchar();  
   if(strcmp(respon, "Ya") == 0 || strcmp(respon, "Tidak") == 0){
     if(strcmp(respon, "Ya") == 0){
       (*f)();
@@ -31,4 +31,5 @@ void ambilBerulang(char* konteks, void (*f)()){
     printf("Respon tidak valid. Hanya Pilih Ya Atau Tidak\n");
     ambilBerulang(konteks, f);
   }
+
 }

@@ -38,7 +38,6 @@ void bagiKelas(int jumlah, int metodePembagian){
     listKelas[i].nama = malloc(sizeof(char)*100);
     scanf("%s", listKelas[i].nama);
     for(;offset<=targetOffset; offset++){
-      printf("offset = %i\n", offset);
       listKelas[i].siswa[idxSiswa] = listSiswa[offset];
       idxSiswa++;
     }
@@ -83,4 +82,3 @@ void swap(klassSiswa *pnode1,klassSiswa *pnode2)
     *pnode1=*pnode2;
     *pnode2=temp;
 }
-

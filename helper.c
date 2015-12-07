@@ -3,6 +3,7 @@ int indexSiswaKosong();
 int checkKetersediaanDataSiswa();
 int checkKetersediaanDataKelas();
 int hitungJumlahSiswa();
+char* cleanNewline(char * name);
 
 extern klassSiswa listSiswa[10000];
 extern klassKelas listKelas[250];
@@ -43,3 +44,10 @@ int checkKetersediaanDataKelas(){
 int hitungJumlahSiswa(){
   return indexSiswaKosong() + 1;
 }
+
+char * cleanNewline(char * name){
+  if ((strlen(name)>0) && (name[strlen (name) - 1] == '\n'))
+  name[strlen (name) - 1] = '\0';
+  return name;
+}
+  
