@@ -14,15 +14,6 @@ klassSiswa listSiswa[10000];
 klassKelas listKelas[250];
 int jumlahKelas;
 int main(int argc, char const *argv[]) {
-  // inputSiswa();
-  // ambilBerulang("siswa", inputSiswa);
-  // loadSiswaCsv();
-  // lihatDataSiswa();
-  // loadSiswaCsv();
-  // bagiKelas(2, 2);
-  // lihatDataKelas();
-  // simpanKeFile();
-  readFromFIle();
   menuUtama();
   return 0;
 }

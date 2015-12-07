@@ -29,26 +29,7 @@ void simpanKeFile(){
    // write entire structure to Accounts file
    fwrite (&outFileFormat, sizeof(outFileFormat), 1, outfile);
 }
-// void readFromFIle(){
-//   FILE *infile;
-//   char namaFile[100];
-//   int i, j;
 
-//   /*** open the accounts file ***/
-//   if (infile == NULL)
-//     {
-//       printf("Masukan nama filenya : ");
-//       scanf("%s", namaFile);
-//       infile = fopen(namaFile,"r");
-//       if(infile == NULL)
-//         fprintf(stderr, "\nError Saat Membuka %s\n\n", namaFile);
-//     }
-
-
-//   while (fread (&listSiswa, sizeof(fileFormat), 1, infile)){
-
-//   }
-// }
 void readFromFIle(){
   FILE *infile;
   fileFormat outFileFormat;
@@ -69,11 +50,11 @@ void readFromFIle(){
   while (fread (&outFileFormat, sizeof(fileFormat), 1, infile))
     i =0;
     while(outFileFormat.listSiswa[i].nama != NULL){
-      // printf("%s\n", outFileFormat.listSiswa[i].nim);
-      // listSiswa[i] = outFileFormat.listSiswa[i];
-      listSiswa[i].nama = (char *)malloc(sizeof( outFileFormat.listSiswa[i].nama)*3);
-      strcpy(listSiswa[i].nama, outFileFormat.listKelas[i].nama);
-      // listSiswa = outFileFormat.listSiswa;
+      listSiswa[i] = outFileFormat.listSiswa[i];
+      i++;
+    }
+    while(outFileFormat.listKelas[i].nama != NULL){
+      listKelas[i] = outFileFormat.listKelas[i];
       i++;
     }
 }

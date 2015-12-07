@@ -13,25 +13,40 @@ void menuUtama() {
   int pilihan;
   printHeaderMenu();
   printf("    1) Input Data\n");
-  printf("    2) Lihat Data\n");
+  if(listSiswa[0].nama != NULL)
+    printf("    2) Lihat Data\n");
   printf("    3) Bagi Siswa Kedalam Kelas\n");
   printf("    4) Load\n");
+  printf("    5) Save\n");
+  printf("    6) exit\n");
   ambilPilihanMenu(&pilihan);
   switch (pilihan) {
     case 1:
       menuInputData();
       break;
     case 2:
-      menuLihatData();
+      if(listSiswa[0].nama != NULL){
+        menuLihatData();
+      }else{
+        salahPilih();
+        menuUtama();
+      }
       break;
     case 3:
       bagiSiswaKedalamKelas();
       break;
     case 4:
       loadSiswaCsv();
-      urutkanSiswaBerdasarkanNim();
       menuUtama();
       break;
+    case 5:
+      simpanKeFile();
+      menuUtama();
+      break;
+    case 6:
+      system('exit');
+      break;
+    default:
   }
 }
 
@@ -71,6 +86,7 @@ void printHeaderMenu(){
 void ambilPilihanMenu(int *pilihan){
   printf("  Masukan Pilihan : ");
   scanf("%i", pilihan);
+  getchar();
   fseek(stdin,0,SEEK_END);
 }
 
@@ -108,4 +124,8 @@ void menuLoad() {
 
 void belumDiImplementasi() {
   printf("Belum Di Implementasi\n");
+}
+
+void salahPilih(){
+  printf("\nPilihan anda salah, silahkan coba lagi");
 }
