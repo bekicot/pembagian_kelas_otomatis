@@ -7,15 +7,17 @@ void menuLihatData();
 void menuSave();
 void menuLoad();
 void belumDiImplementasi();
+void salahPilih();
 
 void menuUtama() {
   // system("clear");
   int pilihan;
   printHeaderMenu();
   printf("    1) Input Data\n");
-  if(listSiswa[0].nama != NULL)
+  if(listSiswa[0].nama != NULL){
     printf("    2) Lihat Data\n");
-  printf("    3) Bagi Siswa Kedalam Kelas\n");
+    printf("    3) Bagi Siswa Kedalam Kelas\n");
+  }
   printf("    4) Load\n");
   printf("    5) Save\n");
   printf("    6) exit\n");
@@ -33,7 +35,13 @@ void menuUtama() {
       }
       break;
     case 3:
-      bagiSiswaKedalamKelas();
+      if(listSiswa[0].nama != NULL){
+        bagiSiswaKedalamKelas();
+        
+      }else{
+        salahPilih();
+        menuUtama();
+      }
       break;
     case 4:
       loadSiswaCsv();
@@ -44,9 +52,11 @@ void menuUtama() {
       menuUtama();
       break;
     case 6:
-      system('exit');
+      system("exit");
       break;
     default:
+      salahPilih();
+      menuUtama();
   }
 }
 
@@ -54,11 +64,7 @@ void menuInputData(){
   int pilihan;
   printHeaderMenu();
   printf("    1) Input Siswa Manual\n");
-  // printf("    2) Input Kelas Manual\n");
-  // printf("    3) Input Ruangan Manual\n");
   printf("    2) Load Siswa (CSV) \n");
-  // printf("    6) Load Kelas (CSV) \n");
-  // printf("    7) Load Ruangan (CSV) \n");
   printf("    0) Kembali Ke Menu Utama \n");
   ambilPilihanMenu(&pilihan);
 
